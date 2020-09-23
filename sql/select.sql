@@ -237,6 +237,11 @@ IMPORT FOREIGN SCHEMA mysql_fdw_regress LIMIT TO (enum_t1) FROM SERVER mysql_svr
 SELECT * FROM enum_t1 ORDER BY id;
 DROP FOREIGN TABLE enum_t1;
 
+-- Issue #202 - correct handling of mixed-case table names.
+IMPORT FOREIGN SCHEMA mysql_fdw_regress LIMIT TO ("mixedCaseTable") FROM SERVER mysql_svr INTO public;
+SELECT * FROM "mixedCaseTable" ORDER BY id;
+DROP FOREIGN TABLE "mixedCaseTable";
+
 -- Cleanup
 DROP TABLE l_test_tbl1;
 DROP TABLE l_test_tbl2;
