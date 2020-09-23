@@ -1744,6 +1744,8 @@ mysqlImportForeignSchema(ImportForeignSchemaStmt *stmt, Oid serverOid)
 					 "    WHEN c.DATA_TYPE = 'blob' THEN 'bytea'"
 					 "    WHEN c.DATA_TYPE = 'mediumblob' THEN 'bytea'"
 					 "    WHEN c.DATA_TYPE = 'longblob' THEN 'bytea'"
+			 		 "    WHEN c.DATA_TYPE = 'binary' THEN 'bytea'" 
+                     			 "    WHEN c.DATA_TYPE = 'varbinary' THEN 'bytea'"
 					 "    ELSE c.DATA_TYPE"
 					 "  END,"
 					 "  c.COLUMN_TYPE,"
