@@ -247,9 +247,9 @@ static void mysql_stmt_error_print(MySQLFdwExecState *festate,
 bool
 mysql_load_library(void)
 {
-#if defined(__APPLE__) || defined(__FreeBSD__)
+#if !defined(RTLD_DEEPBIND)
 	/*
-	 * Mac OS/BSD does not support RTLD_DEEPBIND, but it still works without
+	 *  Some implementations do not support RTLD_DEEPBIND, but it still
 	 * the RTLD_DEEPBIND
 	 */
 	mysql_dll_handle = dlopen(_MYSQL_LIBNAME, RTLD_LAZY);
